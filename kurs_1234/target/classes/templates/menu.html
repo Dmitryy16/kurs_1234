@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="menu">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
+            </li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Управление игроками
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                    <a class="dropdown-item" href="/players">Просмотр игроков</a>
+                    <a class="dropdown-item" href="/players/create">Добавить игрока</a>
+                    <a class="dropdown-item" href="/players/update">Обновить игрока</a>
+                    <a class="dropdown-item" href="/players/delete">Удалить игрока</a>
+                </div>
+            </li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Управление командами
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                    <a class="dropdown-item" href="/teams">Просмотр команд</a>
+                    <a class="dropdown-item" href="/teams/create">Добавить команду</a>
+                    <a class="dropdown-item" href="/teams/delete">Удалить команду</a>
+                </div>
+            </li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Управление матчами
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                    <a class="dropdown-item" href="/matches">Просмотр матчей</a>
+                    <a class="dropdown-item" href="/matches/create">Добавить матч</a>
+                    <a class="dropdown-item" href="/matches/update">Обновить матч</a>
+                    <a class="dropdown-item" href="/matches/delete">Удалить матч</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout" style="color: blue;">Выход из аккаунта</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

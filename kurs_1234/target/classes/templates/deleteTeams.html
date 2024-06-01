@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Удаление команды</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div th:replace="~{menu :: menu}"></div>
+<h2>Удаление команды</h2>
+<form action="/teams/delete" method="post">
+    <label for="teamsId">Выберите команду:</label>
+    <select id="teamsId" name="teamsId" required>
+        <option value="">Выберите команду</option>
+        <option th:each="teams : ${teamsList}" th:value="${teams.id}" th:text="${teams.teamsName}"></option>
+    </select>
+    <input type="submit" value="Удалить">
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

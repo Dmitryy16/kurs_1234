@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавление матча</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div th:replace="~{menu :: menu}"></div>
+<h2>Добавление матча</h2>
+<form action="/matches/create" method="post">
+    <label for="homeTeam">Домашняя команда:</label>
+    <select id="homeTeam" name="homeTeam.id" required>
+        <option value="">Выберите команду</option>
+        <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.teamsName}"></option>
+    </select>
+    <label for="awayTeam">Гостевая команда:</label>
+    <select id="awayTeam" name="awayTeam.id" required>
+        <option value="">Выберите команду</option>
+        <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.teamsName}"></option>
+    </select>
+    <label for="homeTeamScore">Счет домашней команды:</label>
+    <input type="number"  min = 0 id="homeTeamScore" name="homeTeamScore" required>
+    <label for="awayTeamScore">Счет гостевой команды:</label>
+    <input type="number" min = 0 id="awayTeamScore" name="awayTeamScore" required>
+    <label for="assists">Assists</label>
+    <input type="number" min = 0 id="assists" name="assists" required>
+    <label for="rebounds">Rebounds</label>
+    <input type="number" min = 0 id="rebounds" name="rebounds" required>
+    <label for="matchDate">Дата матча:</label>
+    <input type="date" id="matchDate" name="matchDate" required>
+    <input type="submit" value="Добавить">
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавление команды</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div th:replace="~{menu :: menu}"></div>
+<h2>Добавление команды</h2>
+<form action="/teams/create" method="post">
+    <label for="teamsName">Название команды:</label>
+    <input type="text" id="teamsName" name="teamsName" required>
+    <input type="submit" value="Добавить">
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Игроки</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="~{menu :: menu}"></div>
+<div class="container">
+    <h1>Игроки</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Команда</th>
+            <th>Позиция</th>
+            <th>Рост</th>
+            <th>Вес</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="player : ${playerList}">
+            <td th:text="${player.id}"></td>
+            <td th:text="${player.playerName}"></td>
+            <td th:text="${player.team.teamsName}"></td>
+            <td th:text="${player.position}"></td>
+            <td th:text="${player.height}"></td>
+            <td th:text="${player.weight}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

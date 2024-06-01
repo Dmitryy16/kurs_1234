@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Детали матча</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="~{menu :: menu}"></div>
+<div class="container">
+    <h1 th:text="'Детали матча: ' + ${matchDetails.homeTeam.teamsName} + ' - ' + ${matchDetails.awayTeam.teamsName}"></h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Домашняя команда</th>
+            <th>Гостевая команда</th>
+            <th>Счет домашней команды</th>
+            <th>Счет гостевой команды</th>
+            <th>Assists</th>
+            <th>Rebounds</th>
+            <th>Дата матча</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${matchDetails.homeTeam.teamsName}"></td>
+            <td th:text="${matchDetails.awayTeam.teamsName}"></td>
+            <td th:text="${matchDetails.homeTeamScore}"></td>
+            <td th:text="${matchDetails.awayTeamScore}"></td>
+            <td th:text="${matchDetails.assists}"></td>
+            <td th:text="${matchDetails.rebounds}"></td>
+            <td th:text="${matchDetails.matchDate}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>Игроки домашней команды</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Позиция</th>
+            <th>Рост</th>
+            <th>Вес</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="player : ${homeTeamPlayers}">
+            <td th:text="${player.playerName}"></td>
+            <td th:text="${player.position}"></td>
+            <td th:text="${player.height}"></td>
+            <td th:text="${player.weight}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>Игроки гостевой команды</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Позиция</th>
+            <th>Рост</th>
+            <th>Вес</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="player : ${awayTeamPlayers}">
+            <td th:text="${player.playerName}"></td>
+            <td th:text="${player.position}"></td>
+            <td th:text="${player.height}"></td>
+            <td th:text="${player.weight}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

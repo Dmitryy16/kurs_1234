@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Обновить матч</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="~{menu :: menu}"></div>
+<h1>Обновить матч</h1>
+<form action="#" th:action="@{/matches/update/{id}(id=${match.id})}" th:object="${match}" method="post">
+    <label for="homeTeam">Домашняя команда:</label>
+    <select id="homeTeam" th:field="*{homeTeam.id}" >
+        <option th:each="team : ${teams}" th:value="${team.id}">
+            <span th:if="${team != null}" th:text="${team.teamsName}"></span>
+            <span th:unless="${team != null}">No team</span>
+        </option>
+    </select>
+    <label for="awayTeam">Гостевая команда:</label>
+    <select id="awayTeam" th:field="*{awayTeam.id}" >
+        <option th:each="team : ${teams}" th:value="${team.id}">
+            <span th:if="${team != null}" th:text="${team.teamsName}"></span>
+            <span th:unless="${team != null}">No team</span>
+        </option>
+    </select>
+    <label for="homeTeamScore">Счет домашней команды:</label>
+    <input type="number" min = 0 id="homeTeamScore" th:field="*{homeTeamScore}" style="width: 70px;" required>
+    <label for="awayTeamScore">Счет гостевой команды:</label>
+    <input type="number" min = 0 id="awayTeamScore" th:field="*{awayTeamScore}" style="width: 70px;" required>
+    <label for="assists">Assists</label>
+    <input type="number" min = 0 id="assists" th:field="*{assists}" style="width: 70px;" required>
+    <label for="rebounds">Rebounds</label>
+    <input type="number" min = 0 id="rebounds" th:field="*{rebounds}" style="width: 70px;" required>
+    <label for="matchDate">Дата матча:</label>
+    <input type="date" id="matchDate" th:field="*{matchDate}" required>
+    <button type="submit">Обновить</button>
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

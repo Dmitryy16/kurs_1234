@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Удаление матча</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div th:replace="~{menu :: menu}"></div>
+<h1>Удаление матча</h1>
+<form action="/matches/delete" method="post">
+    <label for="matchId">Match ID:</label><br>
+    <input type="number" min = 1 id="matchId" name="matchId" required><br>
+    <input type="submit" value="Удалить матч">
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

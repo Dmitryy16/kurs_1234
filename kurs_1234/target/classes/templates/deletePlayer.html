@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Удаление игрока</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div th:replace="~{menu :: menu}"></div>
+<h2>Удаление игрока</h2>
+<form action="/players/delete" method="post">
+    <label for="playerId">Выберите игрока:</label>
+    <select id="playerId" name="playerId" required>
+        <option value="">Выберите игрока</option>
+        <option th:each="player : ${playerList}" th:value="${player.id}" th:text="${player.playerName}"></option>
+    </select>
+    <input type="submit" value="Удалить">
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

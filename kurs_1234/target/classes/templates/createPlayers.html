@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавление игрока</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div th:replace="~{menu :: menu}"></div>
+<h2>Добавление игрока</h2>
+<form action="/players/create" method="post">
+    <label for="playerName">Имя игрока:</label>
+    <input type="text" id="playerName" name="playerName" required>
+    <label for="teamId">Команда:</label>
+    <select id="teamId" name="team.id" required>
+        <option value="">Выберите команду</option>
+        <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.teamsName}"></option>
+    </select>
+    <label for="position">Позиция:</label>
+    <input type="text" id="position" name="position" required>
+    <label for="height">Рост:</label>
+    <input type="number"  min = 0 id="height" name="height" required>
+    <label for="weight">Вес:</label>
+    <input type="number"  min = 0 id="weight" name="weight" required>
+    <input type="submit" value="Добавить">
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

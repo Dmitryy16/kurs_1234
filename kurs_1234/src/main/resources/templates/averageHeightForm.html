@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Calculate Average Height</title>
+</head>
+<body>
+<h1>Calculate Average Height</h1>
+<form action="#" th:action="@{/teams/average-height}" method="post">
+    <label for="teamName">Team Name:</label><br>
+    <select id="teamName" name="teamName" required>
+        <option value="" selected disabled>Select a team</option>
+        <option th:each="team : ${teams}" th:value="${team.teamsName}" th:text="${team.teamsName}"></option>
+    </select>
+    <input type="submit" value="Calculate">
+</form>
+</body>
+</html>
